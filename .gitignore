@@ -40,3 +40,18 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+# Prisma generated client (if output is inside repo)
+**/node_modules/.prisma
+**/.prisma
+
+# Prisma migrations (OPTIONAL – see note below)
+# Uncomment ONLY if you do NOT want migrations in git
+# **/prisma/migrations/
+
+# Prisma logs
+prisma-debug.log
+prisma-error.log
+
+.env
+.env.*
