@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AUTH_DATABASE_URL: ${{ secrets.AUTH_DATABASE_URL }}
+      AUTH_PORT: 3000
     steps:
       - uses: actions/checkout@v4
         with:
