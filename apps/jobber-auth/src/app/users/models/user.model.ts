@@ -5,4 +5,10 @@ import { Field, ObjectType } from '@nestjs/graphql';
 export class User extends AbstractModel {
   @Field()
   email: string;
+
+  @Field()
+  createdAt: Date;
+
+  @Field()
+  updatedAt: Date;
 }
