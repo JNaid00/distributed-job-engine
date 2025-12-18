@@ -7,7 +7,7 @@ export class LoginInput {
     @IsEmail()
     @IsNotEmpty()
     email: string;
-    
+
     @Field()
     @IsNotEmpty()
     @IsStrongPassword()
