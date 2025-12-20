@@ -1,12 +1,15 @@
 import nx from '@nx/eslint-plugin';
+import importPlugin from 'eslint-plugin-import';
 
 export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
+
   {
     ignores: ['**/dist', '**/out-tsc'],
   },
+
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {
@@ -25,6 +28,7 @@ export default [
       ],
     },
   },
+
   {
     files: [
       '**/*.ts',
@@ -36,7 +40,30 @@ export default [
       '**/*.cjs',
       '**/*.mjs',
     ],
-    // Override or add rules here
-    rules: {},
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type',
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
+    },
   },
 ];

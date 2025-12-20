@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthResolver } from './auth.resolver';
+import { AuthModule } from './auth.module';
 
 describe('AuthResolver', () => {
   let resolver: AuthResolver;
@@ -7,6 +8,7 @@ describe('AuthResolver', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [AuthResolver],
+      imports: [AuthModule],
     }).compile();
 
     resolver = module.get<AuthResolver>(AuthResolver);

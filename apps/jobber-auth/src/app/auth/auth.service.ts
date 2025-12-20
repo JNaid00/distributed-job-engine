@@ -1,11 +1,13 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { LoginInput } from './dto/login.input';
-import { UsersService } from '../users/users.service';
-import { compare } from 'bcryptjs';
-import { TokenPayload } from './dto/token-payload.interface';
 import { ConfigService } from '@nestjs/config/dist/config.service';
 import { JwtService } from '@nestjs/jwt';
+import { compare } from 'bcryptjs';
 import { Response } from 'express';
+
+import { UsersService } from '../users/users.service';
+
+import { LoginInput } from './dto/login.input';
+import { TokenPayload } from './dto/token-payload.interface';
 
 @Injectable()
 export class AuthService {
