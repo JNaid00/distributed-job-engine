@@ -23,7 +23,7 @@ export class AuthService {
         // Json Web Token (JWT)
         const expires = new Date();
         expires.setMilliseconds(
-            expires.getMilliseconds() + parseInt(this.configService.getOrThrow<string>('JWT_EXPIRES_IN_MS')),
+            expires.getMilliseconds() + parseInt(this.configService.getOrThrow<string>('AUTH_JWT_EXPIRES_IN')),
         );
 
         const tokenpayload: TokenPayload = {
