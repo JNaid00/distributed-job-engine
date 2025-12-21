@@ -1,9 +1,11 @@
+import { ConfigModule } from '@nestjs/config/dist/config.module';
+import { JwtModule } from '@nestjs/jwt/dist/jwt.module';
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { AuthService } from './auth.service';
-import { JwtModule } from '@nestjs/jwt/dist/jwt.module';
-import { ConfigModule } from '@nestjs/config/dist/config.module';
 import { UsersModule } from '../users/users.module';
+
+import { AuthService } from './auth.service';
+
 
 describe('AuthService', () => {
   let service: AuthService;
