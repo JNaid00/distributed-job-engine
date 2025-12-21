@@ -6,7 +6,7 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prismaService: PrismaService) { }
+  constructor(private readonly prismaService: PrismaService) {}
 
   async create(data: Prisma.UserCreateInput) {
     return this.prismaService.user.create({
@@ -24,6 +24,13 @@ export class UsersService {
   async findByEmail(args: Prisma.UserWhereUniqueInput) {
     return this.prismaService.user.findUniqueOrThrow({
       where: args,
+    });
+  }
+
+  async updateUser(data: Prisma.UserUpdateInput) {
+    return this.prismaService.user.update({
+      where: { email: data.email as string },
+      data,
     });
   }
 }
