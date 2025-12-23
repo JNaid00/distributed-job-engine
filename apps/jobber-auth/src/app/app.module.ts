@@ -7,8 +7,6 @@ import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 
-
-
 @Module({
   imports: [
     ConfigModule,
@@ -16,7 +14,8 @@ import { UsersModule } from './users/users.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       context: ({ req, res }) => ({
-        req, res
+        req,
+        res,
       }),
       autoSchemaFile: true,
     }),
@@ -25,4 +24,4 @@ import { UsersModule } from './users/users.module';
   ],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}

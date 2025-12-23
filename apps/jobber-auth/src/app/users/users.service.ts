@@ -30,7 +30,10 @@ export class UsersService {
   async updateUser(data: Prisma.UserUpdateInput) {
     return this.prismaService.user.update({
       where: { email: data.email as string },
-      data,
+      data: {
+        ...data,
+        password: await hash(data.password as string, 10),
+      },
     });
   }
 }
