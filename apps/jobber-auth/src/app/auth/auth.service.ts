@@ -4,11 +4,11 @@ import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcryptjs';
 import { Response } from 'express';
 
+import { User } from '../users/models/user.model';
 import { UsersService } from '../users/users.service';
 
 import { LoginInput } from './dto/login.input';
 import { TokenPayload } from './dto/token-payload.interface';
-import { User } from '../users/models/user.model';
 
 @Injectable()
 export class AuthService {
