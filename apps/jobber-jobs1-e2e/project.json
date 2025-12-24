@@ -1,0 +1,17 @@
+{
+  "name": "jobber-jobs1-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": ["jobber-jobs1"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "options": {
+        "jestConfig": "apps/jobber-jobs1-e2e/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "dependsOn": ["jobber-jobs1:build", "jobber-jobs1:serve"]
+    }
+  }
+}
