@@ -1,1 +1,2 @@
-export * from './lib/utils.module';
+export * from './lib/decorators';
+export * from './lib/interfaces';
