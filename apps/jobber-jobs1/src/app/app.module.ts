@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { FibModule } from './jobs/fib/fib.module';
+import { JobModule } from './jobs/jobs.module';
 
 @Module({
-  imports: [ConfigModule, FibModule],
+  imports: [ConfigModule, JobModule],
   controllers: [],
   providers: [],
 })
