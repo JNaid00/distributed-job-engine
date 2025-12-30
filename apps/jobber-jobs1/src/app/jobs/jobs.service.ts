@@ -1,4 +1,8 @@
-import { AbstractJob, JOB_METADATA_KEY } from '@distributed-job-engine/utils';
+import {
+  AbstractJob,
+  JOB_METADATA_KEY,
+  JobMetadata,
+} from '@distributed-job-engine/utils';
 import {
   DiscoveredClassWithMeta,
   DiscoveryService,
@@ -16,5 +20,9 @@ export class JobsService implements OnModuleInit {
       JOB_METADATA_KEY
     );
     console.log('🚀 ~ JobsService ~ onModuleInit ~ jobs:', this.jobs);
+  }
+
+  public getjobs(): AbstractJob[] {
+    return this.jobs.map((job) => job.meta);
   }
 }
