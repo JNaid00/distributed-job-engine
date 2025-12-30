@@ -13,6 +13,11 @@ import { JobsService } from './jobs.service';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,
       driver: ApolloDriver,
+      playground: {
+        settings: {
+          'request.credentials': 'include',
+        },
+      },
     }),
   ],
   providers: [FibonacciJob, JobsService, JobsResolver],

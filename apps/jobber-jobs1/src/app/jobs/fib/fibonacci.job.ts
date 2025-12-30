@@ -2,7 +2,7 @@ import { Job, AbstractJob } from '@distributed-job-engine/utils';
 import { Injectable } from '@nestjs/common';
 
 @Job({
-  name: 'FibonacciJob',
+  name: 'Fibonacci',
   description: 'Computes Fibonacci numbers',
 })
 @Injectable()
