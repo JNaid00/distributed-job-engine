@@ -1,9 +1,11 @@
 import { Job, AbstractJob } from '@distributed-job-engine/utils';
+import { Injectable } from '@nestjs/common';
 
 @Job({
   name: 'FibonacciJob',
   description: 'Computes Fibonacci numbers',
 })
+@Injectable()
 export class FibonacciJob extends AbstractJob {
   compute(n: number): number {
     if (n <= 0) return 0;
