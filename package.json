@@ -5,7 +5,18 @@
   "scripts": {
     "clean:deps": "rimraf node_modules package-lock.json",
     "npm:cache:clean": "npm cache clean --force && npm cache verify",
-    "reinstall": "npm run clean:deps && npm run npm:cache:clean && npm install"
+    "reinstall": "npm run clean:deps && npm run npm:cache:clean && npm install",
+    "generate-ts-proto": "npx protoc --proto_path=proto --ts_proto_out=types --ts_proto_opt=nestJs=true,outputServices=grpc-js proto/*.proto"
+  },
+  "nx": {
+    "targets": {
+      "generate-ts-proto": {
+        "inputs": [
+          "{workspaceRoot}/proto/**/*.proto"
+        ],
+        "cache": "true"
+      }
+    }
   },
   "private": true,
   "dependencies": {
