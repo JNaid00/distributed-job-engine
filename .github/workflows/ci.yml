@@ -34,6 +34,10 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      # Setup protoc
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v3
+
       - run: npm ci
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
