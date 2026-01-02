@@ -1,5 +1,6 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { PrismaPg } from '@prisma/adapter-pg';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { PrismaClient } from '@prisma-clients/jobber-auth';
 import 'dotenv/config';
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { Prisma } from '@prisma-clients/jobber-auth';
 import { hash } from 'bcryptjs';
 
