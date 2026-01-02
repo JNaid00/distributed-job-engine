@@ -25,13 +25,15 @@ export class GqlAuthGuard implements CanActivate, OnModuleInit {
   onModuleInit() {
     this.authService =
       this.client.getService<AuthServiceClient>(AUTH_SERVICE_NAME);
+      console.log("🚀 ~ GqlAuthGuard ~ onModuleInit ~ authService:", this.authService)
+      
   }
   canActivate(
     context: ExecutionContext
   ): boolean | Promise<boolean> | Observable<boolean> {
-    console.log("🚀 ~ GqlAuthGuard ~ canActivate ~ context:", context)
     const request = this.getRequest(context);
     const token = request.cookies?.Authentication;
+    console.log("🚀 ~ GqlAuthGuard ~ canActivate ~ token:", token)
     if (!token) {
       this.logger.warn('No authentication token found in cookies');
       return false;

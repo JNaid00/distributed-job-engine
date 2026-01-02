@@ -13,6 +13,7 @@ export class JobsResolver {
   @UseGuards(GqlAuthGuard)
   @Query(() => [JobModel], { name: 'jobs' })
   getJobs() {
+    console.log('🚀 ~ JobsResolver ~ getJobs ~ called');
     return this.jobsService.getjobs();
   }
 

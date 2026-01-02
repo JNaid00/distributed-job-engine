@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { Observable } from 'rxjs';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {
@@ -8,10 +8,15 @@ import {
   User,
 } from 'types/auth';
 
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
+
 @Controller('auth')
 @AuthServiceControllerMethods()
 export class AuthController implements AuthServiceController {
+  @UseGuards(JwtAuthGuard)
   authenticate(request: AuthRequest): Promise<User> | Observable<User> | User {
-    throw new Error('Method not implemented.');
+    console.log('🚀 ~ AuthController ~ authenticate ~ request:', request);
+    console.log('test');
+    return {} as any;
   }
 }
