@@ -7,7 +7,12 @@ import {
   DiscoveredClassWithMeta,
   DiscoveryService,
 } from '@golevelup/nestjs-discovery';
-import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+  OnModuleInit,
+} from '@nestjs/common';
 
 @Injectable()
 export class JobsService implements OnModuleInit {
@@ -32,7 +37,13 @@ export class JobsService implements OnModuleInit {
       throw new NotFoundException(`Job with name ${name} not found`);
     }
 
-    await (jobEntry.discoveredClass.instance as AbstractJob).execute();
+    if (!(jobEntry.discoveredClass.instance instanceof AbstractJob)) {
+      throw new InternalServerErrorException(
+        `${jobEntry.discoveredClass.name} is not an instance of ${AbstractJob.name}`
+      );
+    }
+
+    await jobEntry.discoveredClass.instance.execute({}, jobEntry.meta.name);
 
     return jobEntry.meta;
   }

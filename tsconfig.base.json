@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@distributed-job-engine/nestjs": ["libs/nestjs/src/index.ts"],
+      "@distributed-job-engine/pulsar": ["libs/pulsar/src/index.ts"],
       "@distributed-job-engine/utils": ["libs/utils/src/index.ts"]
     }
   },

@@ -1,6 +1,7 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { join } from 'path';
 
+import { PulsarModule } from '@distributed-job-engine/pulsar';
 import { DiscoveryModule } from '@golevelup/nestjs-discovery';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
@@ -8,7 +9,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AUTH_PACKAGE_NAME } from 'types/auth';
 
-import { FibonacciJob } from './fib/fibonacci.job';
+import { FibonacciJob } from './jobs/fib/fibonacci.job';
 import { JobsResolver } from './jobs.resolver';
 import { JobsService } from './jobs.service';
 
@@ -34,6 +35,7 @@ import { JobsService } from './jobs.service';
         },
       },
     ]),
+    PulsarModule,
   ],
   providers: [FibonacciJob, JobsService, JobsResolver],
 })
