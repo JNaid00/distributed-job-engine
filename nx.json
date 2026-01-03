@@ -39,7 +39,11 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/jobber-auth-e2e/**/*", "apps/jobber-jobs1-e2e/**/*"]
+      "exclude": [
+        "apps/jobber-auth-e2e/**/*",
+        "apps/jobber-jobs1-e2e/**/*",
+        "apps/jobber-executer-e2e/**/*"
+      ]
     }
   ],
   "targetDefaults": {
@@ -57,6 +61,13 @@
             "output": "proto"
           }
         ]
+      }
+    },
+    "lint": {
+      "configurations": {
+        "fix": {
+          "fix": true
+        }
       }
     }
   }
