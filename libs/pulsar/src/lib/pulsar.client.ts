@@ -8,6 +8,7 @@ export class PulsarClient implements OnModuleDestroy {
     serviceUrl: this.configService.getOrThrow<string>('PULSAR_SERVICE_URL'),
   });
   private readonly producers: Pulsar.Producer[] = [];
+  private readonly consumers: Pulsar.Consumer[] = [];
 
   constructor(private readonly configService: ConfigService) {}
 
@@ -20,10 +21,23 @@ export class PulsarClient implements OnModuleDestroy {
     return producer;
   }
 
+  async createConsumer(
+    topic: string,
+    listener: (message: Pulsar.Message) => void
+  ) {
+    const consumer = await this.client.subscribe({
+      topic: topic,
+      subscription: 'jobber',
+      listener: listener,
+    });
+
+    this.consumers.push(consumer);
+
+    return consumer;
+  }
+
   async onModuleDestroy() {
-    this.producers.forEach(prod => {
-        prod.close();
-    })
+    await Promise.all(this.producers.map((prod) => prod.close()));
     await this.client.close();
   }
 }
