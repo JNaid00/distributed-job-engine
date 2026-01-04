@@ -42,8 +42,9 @@ export class JobsService implements OnModuleInit {
         `${jobEntry.discoveredClass.name} is not an instance of ${AbstractJob.name}`
       );
     }
-
+    console.log("🚀 ~ JobsService ~ executeJob ~ jobEntry.meta.name:", jobEntry.meta.name)
     await jobEntry.discoveredClass.instance.execute({}, jobEntry.meta.name);
+    
 
     return jobEntry.meta;
   }
