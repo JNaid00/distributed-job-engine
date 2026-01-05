@@ -1,15 +1,16 @@
 import { PulsarClient, PulsarConsumer } from '@distributed-job-engine/pulsar';
+import { JobInfo } from '@distributed-job-engine/utils';
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Message } from 'pulsar-client';
 
 @Injectable()
 export class FibConsumer extends PulsarConsumer implements OnModuleInit {
   constructor(pulsarClient: PulsarClient) {
-    super(pulsarClient, 'Fibonacci');
+    super(pulsarClient, JobInfo.Fibonacci.name);
   }
 
   protected onMessage(message: Message): Promise<void> {
-    console.log('Hello');
+    console.log(message);
 
     return;
   }
