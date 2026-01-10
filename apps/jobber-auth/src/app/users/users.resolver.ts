@@ -26,7 +26,7 @@ export class UsersResolver {
   ) {
     return this.usersService.updateUser({
       ...updateUserInput,
-      updatedAt: new Date(),
+      updatedAt: new Date(1),
     });
   }
 
